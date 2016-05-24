@@ -1,0 +1,26 @@
+{
+    "name": "sle/typo3-extbase-services",
+    "description": "A set of usefull services for TYPO3 Extbase extensions.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve Lenz",
+            "email": "kontakt@steve-lenz.de"
+        }
+    ],
+    "keywords": [
+        "typo3",
+        "extbase",
+        "services"
+    ],
+    "require": {
+        "typo3/cms": "~6||~7",
+        "php": ">=5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sle\\TYPO3\\Extbase\\": "TYPO3/Extbase"
+        }
+    }
+}
