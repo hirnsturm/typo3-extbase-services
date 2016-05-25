@@ -38,8 +38,8 @@ class FalHelper
     /**
      * Download a FAL-File
      *
-     * @param int $uid uid of originalFile (originalResource.originalFile.properties.uid)
-     * @return boolean|\Xima\XmBildarchiv\Controller\Exception
+     * @param $uid
+     * @return bool|\Exception|Exception
      */
     public function downloadFile($uid)
     {
