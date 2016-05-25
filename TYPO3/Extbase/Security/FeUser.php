@@ -3,7 +3,7 @@
 namespace Sle\TYPO3\Extbase\Security;
 
 /**
- * Helper for FeUser
+ * Layer for the TYPO3 fe_user
  *
  * @author Steve Lenz <kontakt@steve-lenz.de>
  * @copyright (c) 2015, Steve Lenz
@@ -12,12 +12,12 @@ class FeUser
 {
 
     /**
-     * @var FeUser
+     * @var fe_user
      */
     private $user = null;
 
     /**
-     * @var FeUser groupData
+     * @var fe_user groupData
      */
     private $groupData = null;
 
@@ -33,6 +33,8 @@ class FeUser
     }
 
     /**
+     * Returns the fe_user uid
+     * 
      * @return int
      */
     public function getUid()
@@ -41,6 +43,8 @@ class FeUser
     }
 
     /**
+     * Returns the whole fe_user data array
+     * 
      * @return array
      */
     public function getUser()
@@ -49,6 +53,8 @@ class FeUser
     }
 
     /**
+     * Returns the whole fe_user group data
+     * 
      * @return array
      */
     public function getGroupData()
@@ -57,35 +63,35 @@ class FeUser
     }
 
     /**
-     * Checks if fe_user is authenticated.
+     * Checks if fe_user is authenticated
      *
      * @return bool
      */
-    public function feUserIsAuthenticated()
+    public function isAuthenticated()
     {
         return (null != $this->getUid());
     }
 
     /**
-     * Checks if fe_user is authenticated and has given role.
+     * Checks if fe_user is authenticated and has given role
      *
      * @param string $role
      * @return bool
      */
-    public function feUserHasRole($role)
+    public function hasRole($role)
     {
-        return ($this->feUserIsAuthenticated() && in_array($role, $this->groupData['title']));
+        return ($this->isAuthenticated() && in_array($role, $this->groupData['title']));
     }
 
     /**
-     * Checks if fe_user is authenticated and has given role id.
+     * Checks if fe_user is authenticated and has given role id
      *
      * @param int $role
      * @return bool
      */
-    public function feUserHasRoleId($role)
+    public function hasRoleId($role)
     {
-        return ($this->feUserIsAuthenticated() && in_array($role, $this->groupData['uid']));
+        return ($this->isAuthenticated() && in_array($role, $this->groupData['uid']));
     }
 
 }
