@@ -1,6 +1,6 @@
 # TYPO3 Extbase Extension Services
 
-What does it do?
+## What does it do?
 A set of usefull services for TYPO3 Extbase extensions.
 
 ## Requirements
