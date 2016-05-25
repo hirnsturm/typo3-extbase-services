@@ -33,3 +33,19 @@ if (true == $session->has('your-data-key')) {
 $session->remove('your-data-key');
 
 ```
+
+### FeUser
+Layer for the TYPO3 fe_user.
+
+```php
+// init FeUser access
+$feUser = new Sle\TYPO3\Extbase\Security\FeUSer();
+
+// methods
+$feUser->getUid();
+$feUser->getUser();
+$feUser->getGroupData();
+$feUser->isAuthenticated();
+$feUser->hasRole($role);
+$feUser->hasRoleId($id);
+´´´
