@@ -9,7 +9,7 @@ This library offers a set of useful services for TYPO3 Extbase extensions.
 
 ## Installation
 ```bash
-composer require sle/typo3-exceptionhandler
+composer require sle/typo3-extbase-services
 ```
 
 ## Cookbook
