@@ -3,48 +3,50 @@
 namespace Sle\TYPO3\Extbase\FAL;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * FAL-Helper for TYPO3 Extbase
+ * FAL-Utility for TYPO3 Extbase
  *
  * @author Steve Lenz <kontakt@steve-lenz.de>
  * @copyright (c) 2014, Steve Lenz
  */
-class FalHelper
+class FalUtility
 {
 
     /**
      * Finds FAL objects by uid
      *
-     * @param string $elementUids - UIDs as CSV
-     * @return array
+     * @param array $fileUids - Array of File-UIDs
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
      */
-    protected function findFileReferenceObjects($elementUids)
+    public static function findFileReferenceObjects(array $fileUids)
     {
-        $elements = array();
-        $sliderItemUids = explode(',', $elementUids);
+        $entities = new ObjectStorage();
 
-        if (!empty($sliderItemUids)) {
+        if (!empty($fileUids)) {
             $resourceFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
-            foreach ($sliderItemUids as $uid) {
+
+            foreach ($fileUids as $uid) {
                 $fileReference = $resourceFactory->getFileReferenceObject($uid);
-                $elements[$uid] = $fileReference->getProperties();
+                $entities->attach($fileReference->getProperties());
             }
         }
 
-        return $elements;
+        return $entities;
     }
 
     /**
      * Download a FAL-File
      *
-     * @param $uid
+     * @param $fileUid
+     * @param array $additionalHeaders
      * @return bool|\Exception|Exception
      */
-    public function downloadFile($uid)
+    public static function downloadFile($fileUid, $additionalHeaders = array())
     {
         $fileRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\FileRepository');
-        $entity = $fileRepository->findByUid($uid);
+        $entity = $fileRepository->findByUid($fileUid);
 
         if (!$entity) {
             return false;
@@ -63,6 +65,10 @@ class FalHelper
             'Content-Transfer-Encoding' => 'binary',
             'Content-Length'            => $properties['size'],
         );
+
+        if (!empty($additionalHeaders)) {
+            array_merge($headers, $additionalHeaders);
+        }
 
         try {
             $response = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Mvc\\Web\\Response');
