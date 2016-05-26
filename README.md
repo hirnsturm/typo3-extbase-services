@@ -44,6 +44,7 @@ $feUser = new Sle\TYPO3\Extbase\Security\FeUSer();
 // methods
 $feUser->getUid();
 $feUser->getUser();
+$feUser->getUser('username');
 $feUser->getGroupData();
 $feUser->isAuthenticated();
 $feUser->hasRole($role);
