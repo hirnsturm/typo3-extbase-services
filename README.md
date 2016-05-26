@@ -31,7 +31,6 @@ if (true == $session->has('your-data-key')) {
 
 // remove data from session
 $session->remove('your-data-key');
-
 ```
 
 ### FeUser
@@ -39,7 +38,7 @@ Layer for the TYPO3 fe_user.
 
 ```php
 // init FeUser access
-$feUser = new Sle\TYPO3\Extbase\Security\FeUSer();
+$feUser = new Sle\TYPO3\Extbase\Security\FeUser();
 
 // methods
 $feUser->getUid();
@@ -49,4 +48,14 @@ $feUser->getGroupData();
 $feUser->isAuthenticated();
 $feUser->hasRole($role);
 $feUser->hasRoleId($id);
-´´´
+```
+
+### FalUtility
+Offers methods for working with FAL files
+
+```php
+// get FAL objects by file uid
+FalUtility::findFileReferenceObjects(array());
+// init a file download by file uid
+FalUtility::downloadFile($uid, $additionalHeaders = array());
+```
