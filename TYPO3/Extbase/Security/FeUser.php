@@ -34,7 +34,7 @@ class FeUser
 
     /**
      * Returns the fe_user uid
-     * 
+     *
      * @return int
      */
     public function getUid()
@@ -43,18 +43,24 @@ class FeUser
     }
 
     /**
-     * Returns the whole fe_user data array
-     * 
-     * @return array
+     * Returns fe_user data
+     *
+     * @param null $key - If null you get the whole user data array
+     * @return bool|fe_user
      */
-    public function getUser()
+    public function getUser($key = null)
     {
-        return $this->user;
+        if (null == $key) {
+            return $this->user;
+        } else {
+            return (isset($this->user[$key])) ? $this->user[$key] : false;
+        }
+
     }
 
     /**
      * Returns the whole fe_user group data
-     * 
+     *
      * @return array
      */
     public function getGroupData()
