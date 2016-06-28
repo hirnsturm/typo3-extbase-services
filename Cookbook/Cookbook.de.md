@@ -5,7 +5,7 @@
 - [FeUser](#FeUSer)
 - [FalUtility](#FalUtility)
 
-## [Session](name=Session)
+## <a name="Session">Session</a>
 Mit Hilfer der Session-Klasses erhält man einen einfachen Zugriff auf die TYPO3 FeUser Session.
 
 ```php
@@ -24,7 +24,7 @@ if (true == $session->has('your-data-key')) {
 $session->remove('your-data-key');
 ```
 
-## [FeUser](name=FeUSer)
+## <a name="FeUser">FeUser</a>
 Einfacher Zugriff auf die FeUser-Daten.
 
 ```php
@@ -41,7 +41,7 @@ $feUser->hasRole($role);
 $feUser->hasRoleId($id);
 ```
 
-## [FalUtility](name=FalUtility)
+## <a name="FalUtility">FalUtility</a>
 FalUtility bietet verschiedene Methoden zum Arbeiten mit FAL-Dateien ([File Abstraction Layer](https://docs.typo3.org/typo3cms/FileAbstractionLayerReference/))
 
 

@@ -5,7 +5,7 @@
 - [FeUser](#FeUSer)
 - [FalUtility](#FalUtility)
 
-## [Session](name=Session)
+## <a name="Session">Session</a>
 With Session you have an easy access to the TYPO3 FeUser Session.
 
 ```php
@@ -24,7 +24,7 @@ if (true == $session->has('your-data-key')) {
 $session->remove('your-data-key');
 ```
 
-## [FeUser](name=FeUSer)
+## <a name="FeUser">FeUser</a>
 Layer for the TYPO3 fe_user.
 
 ```php
@@ -41,7 +41,7 @@ $feUser->hasRole($role);
 $feUser->hasRoleId($id);
 ```
 
-## [FalUtility](name=FalUtility)
+## <a name="FalUtility">FalUtility</a>
 Offers methods for working with FAL files
 
 ```php
