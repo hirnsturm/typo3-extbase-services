@@ -17,7 +17,7 @@ class Session
      * @param string $key
      * @param mixed $data
      */
-    public function set($key, $data)
+    public static function set($key, $data)
     {
         $sessionData = serialize($data);
         $GLOBALS['TSFE']->fe_user->setKey('ses', $key, $sessionData);
@@ -30,7 +30,7 @@ class Session
      * @param string $key
      * @return mixed
      */
-    public function get($key)
+    public static function get($key)
     {
         $sessionData = $GLOBALS['TSFE']->fe_user->getKey('ses', $key);
 
@@ -43,7 +43,7 @@ class Session
      * @param string $key
      * @return boolean
      */
-    public function has($key)
+    public static function has($key)
     {
         return ($GLOBALS['TSFE']->fe_user->getKey('ses', $key)) ? true : false;
     }
@@ -53,7 +53,7 @@ class Session
      *
      * @param string $key
      */
-    public function remove($key)
+    public static function remove($key)
     {
         $GLOBALS['TSFE']->fe_user->setKey('ses', $key, null);
         $GLOBALS['TSFE']->fe_user->storeSessionData();
@@ -62,7 +62,7 @@ class Session
     /**
      * Removes all session data
      */
-    public function removeAll()
+    public static function removeAll()
     {
         $GLOBALS['TSFE']->fe_user->removeSessionData();
     }
