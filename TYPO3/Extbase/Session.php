@@ -49,7 +49,7 @@ class Session
     }
 
     /**
-     * Clean up session
+     * Removes session data by key
      *
      * @param string $key
      */
@@ -57,6 +57,14 @@ class Session
     {
         $GLOBALS['TSFE']->fe_user->setKey('ses', $key, null);
         $GLOBALS['TSFE']->fe_user->storeSessionData();
+    }
+
+    /**
+     * Removes all session data
+     */
+    public function removeAll()
+    {
+        $GLOBALS['TSFE']->fe_user->removeSessionData();
     }
 
 }
