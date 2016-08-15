@@ -3,7 +3,7 @@
 namespace Sle\TYPO3\Extbase;
 
 /**
- * Session-Handler for TYPO3 Extbase
+ * Session-Handler for TYPO3 Extbase fe_user session
  *
  * @author Steve Lenz <kontakt@steve-lenz.de>
  * @copyright (c) 2014, Steve Lenz
@@ -12,7 +12,7 @@ class Session
 {
 
     /**
-     * Write data into session
+     * Write data into fe_user session
      *
      * @param string $key
      * @param mixed $data
@@ -25,7 +25,7 @@ class Session
     }
 
     /**
-     * Restore data from session
+     * Restore data from fe_user session
      *
      * @param string $key
      * @return mixed
@@ -38,7 +38,7 @@ class Session
     }
 
     /**
-     * Checks whether a key in session exists
+     * Checks whether a key in fe_user session exists
      *
      * @param string $key
      * @return boolean
@@ -49,7 +49,7 @@ class Session
     }
 
     /**
-     * Removes session data by key
+     * Removes fe_user session data by key
      *
      * @param string $key
      */
@@ -60,7 +60,7 @@ class Session
     }
 
     /**
-     * Removes all session data
+     * Removes all fe_user session data
      */
     public static function removeAll()
     {

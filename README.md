@@ -7,6 +7,9 @@ This library offers a set of useful services for TYPO3 Extbase extensions.
 - PHP 5.5 or heigher
 - TYPO3 6 or 7
 
+## Changelog
+[Changelog](./Changelog.md)
+
 ## Installation
 ```bash
 composer require sle/typo3-extbase-services
