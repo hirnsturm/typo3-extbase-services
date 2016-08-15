@@ -22,6 +22,7 @@ if (true == $session->has('your-data-key')) {
 
 // remove data from session
 $session->remove('your-data-key');
+$session->removeAll();
 ```
 
 ## <a name="FeUser">FeUser</a>
