@@ -19,7 +19,7 @@ class EntityUtility
      * @param string $fullQualifiedClassName - e.g. \\My\\App\\Entity
      * @return mixed
      */
-    public static function getEntityByValueAdnClass($value, $fullQualifiedClassName)
+    public static function getEntityByValueAndClass($value, $fullQualifiedClassName)
     {
         if (is_a($value, $fullQualifiedClassName)) {
             return $value;
