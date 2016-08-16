@@ -2,8 +2,9 @@
 
 ## v0.4.0
 ### Added
-- Class BaseMultiStepValueObject
-- Class BaseValueObject
+- Class Sle\TYPO3\Extbase\Domain\Model\BaseMultiStepValueObject
+- Class Sle\TYPO3\Extbase\Domain\Model\BaseValueObject
+- Class Sle\TYPO3\Extbase\Domain\Utility\EntityUtility
 
 ## v0.3.0
 ### Added
