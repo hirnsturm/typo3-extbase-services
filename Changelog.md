@@ -6,6 +6,9 @@
 - Class Sle\TYPO3\Extbase\Domain\Model\BaseValueObject
 - Class Sle\TYPO3\Extbase\Domain\Utility\EntityUtility
 
+### Changes
+- All FeUser methods changed into static methods
+
 ## v0.3.0
 ### Added
 - removeAll for session data
