@@ -9,37 +9,32 @@
 Mit Hilfer der Session-Klasses erhält man einen einfachen Zugriff auf die TYPO3 FeUser Session.
 
 ```php
-// init session access
-$session = new Sle\TYPO3\Extbase\Session();
-
 // write data into session
-$session->set('your-data-key', $data);
+Session::set('your-data-key', $data);
 
 // check whether key in session exists
-if (true == $session->has('your-data-key')) {
-	$data = $session->get('your-data-key');
+if (true == Session::has('your-data-key')) {
+	$data = Session::get('your-data-key');
 }
 
 // remove data from session
-$session->remove('your-data-key');
-$session->removeAll();
+Session::remove('your-data-key');
+Session::removeAll();
 ```
 
 ## <a name="FeUser">FeUser</a>
 Einfacher Zugriff auf die FeUser-Daten.
 
 ```php
-// init FeUser access
-$feUser = new Sle\TYPO3\Extbase\Security\FeUser();
-
 // methods
-$feUser->getUid();
-$feUser->getUser();
-$feUser->getUser('username');
-$feUser->getGroupData();
-$feUser->isAuthenticated();
-$feUser->hasRole($role);
-$feUser->hasRoleId($id);
+FeUser::isFeUser();
+FeUser::getUid();
+FeUser::getUser();
+FeUser::getUser('username');
+FeUser::getGroupData();
+FeUser::isAuthenticated();
+FeUser::hasRole($role);
+FeUser::hasRoleId($id);
 ```
 
 ## <a name="FalUtility">FalUtility</a>
