@@ -31,4 +31,36 @@ class EntityUtility
         }
     }
 
+    /**
+     * Merges array data into an entity
+     *
+     * @param object $targetEntity
+     * @param array $array
+     * @return mixed
+     */
+    public static function mergeArrayIntoEntity($targetEntity, $array)
+    {
+        foreach ($array as $property => $value) {
+            if (!empty($value)) {
+                if (is_a($targetEntity->{'get' . ucfirst($property)}(),
+                    '\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage')
+                ) {
+                    $targetEntity->{'set' . ucfirst($property)}(new ObjectStorage());
+                    if (is_array($value)) {
+                        $singular = (preg_match('~s$~i', $property) > 0) ? rtrim($property, 's') : sprintf('%ss',
+                            $property);
+                        foreach ($value as $item) {
+                            $targetEntity->{'add' . ucfirst($singular)}($item);
+                        }
+                    }
+                } else {
+                    $targetEntity->{'set' . ucfirst($property)}($value);
+                }
+            }
+        }
+
+        return $targetEntity;
+    }
+
+
 }
