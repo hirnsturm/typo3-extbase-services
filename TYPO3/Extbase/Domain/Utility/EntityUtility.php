@@ -62,5 +62,20 @@ class EntityUtility
         return $targetEntity;
     }
 
+    /**
+     * @param $entity
+     * @param $array
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public static function arrayToObjectStorage($entity, $array)
+    {
+        $storage = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage');
+        foreach ($array as $item) {
+            $storage->attach(EntityUtility::mergeArrayIntoEntity($entity, $item));
+        }
+
+        return $storage;
+    }
+
 
 }
