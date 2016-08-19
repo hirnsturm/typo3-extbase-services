@@ -22,6 +22,17 @@ class FeUser
     }
 
     /**
+     * Returns the parsed TSconfig for the fe_user
+     * The TSconfig will be cached in $this->userTS.
+     *
+     * @return array
+     */
+    public static function getUserTSConfig()
+    {
+        return $GLOBALS['TSFE']->fe_user->getUserTSconf();
+    }
+
+    /**
      * Returns the fe_user uid
      *
      * @return int
