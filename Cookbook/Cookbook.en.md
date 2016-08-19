@@ -20,6 +20,11 @@ if (true == Session::has('your-data-key')) {
 // remove data from session
 Session::remove('your-data-key');
 Session::removeAll();
+
+// Database methods
+Session::persist();
+Session::fetch();
+Session::delete();
 ```
 
 ## <a name="FeUser">FeUser</a>
@@ -28,6 +33,7 @@ Layer for the TYPO3 fe_user.
 ```php
 // methods
 FeUser::isFeUser();
+FeUser::getUserTSConfig();
 FeUser::getUid();
 FeUser::getUser();
 FeUser::getUser('username');
