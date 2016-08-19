@@ -20,8 +20,7 @@ class Session
      */
     public static function set($key, $data, $type = 'ses')
     {
-        $sessionData = serialize($data);
-        $GLOBALS['TSFE']->fe_user->setKey(self::isType($type), $key, $sessionData);
+        $GLOBALS['TSFE']->fe_user->setKey(self::isType($type), $key, serialize($data));
         $GLOBALS['TSFE']->fe_user->storeSessionData();
     }
 
