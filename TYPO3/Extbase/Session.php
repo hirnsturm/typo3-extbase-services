@@ -59,12 +59,4 @@ class Session
         $GLOBALS['TSFE']->fe_user->storeSessionData();
     }
 
-    /**
-     * Removes all fe_user session data
-     */
-    public static function removeAll()
-    {
-        $GLOBALS['TSFE']->fe_user->removeSessionData();
-    }
-
 }
