@@ -12,24 +12,24 @@ class FeUser
 {
 
     /**
-     * @var fe_user
+     * Checks whether fe_user exists
+     *
+     * @return bool
      */
-    private $user = null;
-
-    /**
-     * @var fe_user groupData
-     */
-    private $groupData = null;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public static function isFeUser()
     {
-        if ($GLOBALS['TSFE']->fe_user->user) {
-            $this->user = $GLOBALS['TSFE']->fe_user->user;
-            $this->groupData = $GLOBALS['TSFE']->fe_user->groupData;
-        }
+        return ($GLOBALS['TSFE']->fe_user->user) ? true : false;
+    }
+
+    /**
+     * Returns the parsed TSconfig for the fe_user
+     * The TSconfig will be cached in $this->userTS.
+     *
+     * @return array
+     */
+    public static function getUserTSConfig()
+    {
+        return $GLOBALS['TSFE']->fe_user->getUserTSconf();
     }
 
     /**
@@ -37,23 +37,23 @@ class FeUser
      *
      * @return int
      */
-    public function getUid()
+    public static function getUid()
     {
-        return $this->user['uid'];
+        return $GLOBALS['TSFE']->fe_user->user['uid'];
     }
 
     /**
      * Returns fe_user data
      *
      * @param null $key - If null you get the whole user data array
-     * @return bool|fe_user
+     * @return mixed - false if key not exists
      */
-    public function getUser($key = null)
+    public static function getUser($key = null)
     {
         if (null == $key) {
-            return $this->user;
+            return $GLOBALS['TSFE']->fe_user->user;
         } else {
-            return (isset($this->user[$key])) ? $this->user[$key] : false;
+            return (isset($GLOBALS['TSFE']->fe_user->user[$key])) ? $GLOBALS['TSFE']->fe_user->user[$key] : false;
         }
 
     }
@@ -63,41 +63,47 @@ class FeUser
      *
      * @return array
      */
-    public function getGroupData()
+    public static function getGroupData()
     {
-        return $this->groupData;
+        return $GLOBALS['TSFE']->fe_user->groupData;
     }
 
     /**
-     * Checks if fe_user is authenticated
+     * Checks whether fe_user is authenticated
      *
      * @return bool
      */
-    public function isAuthenticated()
+    public static function isAuthenticated()
     {
-        return (null != $this->getUid());
+        return (self::isFeUser() && null != self::getUid());
     }
 
     /**
-     * Checks if fe_user is authenticated and has given role
+     * Checks whether fe_user is authenticated and has given role
      *
      * @param string $role
      * @return bool
      */
-    public function hasRole($role)
+    public static function hasRole($role)
     {
-        return ($this->isAuthenticated() && in_array($role, $this->groupData['title']));
+        return (self::isFeUser()
+            && self::isAuthenticated()
+            && in_array($role, $GLOBALS['TSFE']->fe_user->groupData['title'])
+        );
     }
 
     /**
-     * Checks if fe_user is authenticated and has given role id
+     * Checks whether fe_user is authenticated and has given role id
      *
      * @param int $role
      * @return bool
      */
-    public function hasRoleId($role)
+    public static function hasRoleId($role)
     {
-        return ($this->isAuthenticated() && in_array($role, $this->groupData['uid']));
+        return (self::isFeUser()
+            && self::isAuthenticated()
+            && in_array($role, $GLOBALS['TSFE']->fe_user->groupData['uid'])
+        );
     }
 
 }

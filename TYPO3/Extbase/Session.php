@@ -3,7 +3,7 @@
 namespace Sle\TYPO3\Extbase;
 
 /**
- * Session-Handler for TYPO3 Extbase fe_user session
+ * Session-Layer for TYPO3 Extbase fe_user session
  *
  * @author Steve Lenz <kontakt@steve-lenz.de>
  * @copyright (c) 2014, Steve Lenz
@@ -60,9 +60,25 @@ class Session
     }
 
     /**
-     * Removes all fe_user session data
+     * Stores fe_user session data in database
      */
-    public static function removeAll()
+    public static function persist()
+    {
+        $GLOBALS['TSFE']->fe_user->storeSessionData();
+    }
+
+    /**
+     * Fetches fe_user session data from database
+     */
+    public static function fetch()
+    {
+        $GLOBALS['TSFE']->fe_user->fetchSessionData();
+    }
+
+    /**
+     * Deletes fe_user session data from database
+     */
+    public static function delete()
     {
         $GLOBALS['TSFE']->fe_user->removeSessionData();
     }
