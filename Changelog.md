@@ -1,5 +1,9 @@
 # Changelog
 
+## next
+### Added
+- Sle\TYPO3\Extbase\Domain\Utility\EntityUtility::mergeEntities()
+
 ## v0.4.0
 ### Added
 - Class Sle\TYPO3\Extbase\Domain\Model\BaseMultiStepValueObject
