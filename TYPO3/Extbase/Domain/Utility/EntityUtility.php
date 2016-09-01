@@ -95,8 +95,7 @@ class EntityUtility
             $value = $mergeEntity->{'get' . ucfirst($property->getName())}();
 
             if (!empty($value)) {
-                if (is_a($value, '\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage')
-                ) {
+                if (is_a($value, '\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage')) {
                     $targetEntity->{'set' . ucfirst($property)}(new ObjectStorage());
                     if (is_array($value)) {
                         $singular = (preg_match('~s$~i', $property) > 0)
