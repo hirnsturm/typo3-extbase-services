@@ -63,6 +63,8 @@ class EntityUtility
     }
 
     /**
+     * Transforms an array into ObjectStorage
+     *
      * @param $entity
      * @param $array
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
