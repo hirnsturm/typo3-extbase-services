@@ -97,20 +97,18 @@ class EntityUtility
                 continue;
             }
 
-            if (!empty($value)) {
-                if (is_a($value, '\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage')) {
-                    $targetEntity->{'set' . ucfirst($property->getName())}(new ObjectStorage());
-                    if (is_array($value)) {
-                        $singular = (preg_match('~s$~i', $property->getName()) > 0)
-                            ? rtrim($property->getName(), 's')
-                            : sprintf('%ss', $property->getName());
-                        foreach ($value->toArray() as $item) {
-                            $targetEntity->{'add' . ucfirst($singular)}($item);
-                        }
-                    }
-                } else {
-                    $targetEntity->{'set' . ucfirst($property->getName())}($value);
+            $value = $mergeEntity->{'get' . ucfirst($property->getName())}();
+
+            if (is_a($value, '\\TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage')) {
+                $targetEntity->{'set' . ucfirst($property->getName())}(new ObjectStorage());
+                $singular = (preg_match('~s$~i', $property->getName()) > 0)
+                    ? rtrim($property->getName(), 's')
+                    : sprintf('%ss', $property->getName());
+                foreach ($value->toArray() as $item) {
+                    $targetEntity->{'add' . ucfirst($singular)}($item);
                 }
+            } elseif (!empty(trim($value))) {
+                $targetEntity->{'set' . ucfirst($property->getName())}($value);
             }
         }
 
