@@ -4,6 +4,7 @@
 - [Session](#Session)
 - [FeUser](#FeUser)
 - [FalUtility](#FalUtility)
+- [UserFunctions](#UserFunctions)
 
 ## <a name="Session">Session</a>
 Mit Hilfer der Session-Klasses erhält man einen einfachen Zugriff auf die TYPO3 FeUser Session.
@@ -51,4 +52,17 @@ FalUtility bietet verschiedene Methoden zum Arbeiten mit FAL-Dateien ([File Abst
 FalUtility::findFileReferenceObjects(array());
 // init a file download by file uid
 FalUtility::downloadFile($uid, $additionalHeaders = array());
+```
+
+## <a name="UserFunctions">UserFunctions</a>
+```
+// get extension version
+lib.version = USER
+lib.version {
+    userFunc = Sle\TYPO3\Extbase\UserFunc\VersionUserFunc->getExtensionVersion
+    # extensionKey [mandatory]
+    extensionKey = my_ext_key
+    # Overrides default label [optional]
+    label = Version:&nbsp;
+}
 ```

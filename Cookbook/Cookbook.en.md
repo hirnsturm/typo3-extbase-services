@@ -4,6 +4,7 @@
 - [Session](#Session)
 - [FeUser](#FeUser)
 - [FalUtility](#FalUtility)
+- [UserFunctions](#UserFunctions)
 
 ## <a name="Session">Session</a>
 With Session you have an easy access to the TYPO3 FeUser Session.
@@ -50,4 +51,17 @@ Offers methods for working with FAL files
 FalUtility::findFileReferenceObjects(array());
 // init a file download by file uid
 FalUtility::downloadFile($uid, $additionalHeaders = array());
+```
+
+## <a name="UserFunctions">UserFunctions</a>
+```
+// get extension version
+lib.version = USER
+lib.version {
+    userFunc = Sle\TYPO3\Extbase\UserFunc\VersionUserFunc->getExtensionVersion
+    # extensionKey [mandatory]
+    extensionKey = my_ext_key
+    # Overrides default label [optional]
+    label = Version:&nbsp;
+}
 ```
