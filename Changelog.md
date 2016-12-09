@@ -1,8 +1,9 @@
 # Changelog
 
-## next
+## v0.5.0
 ### Added
 - Sle\TYPO3\Extbase\Domain\Utility\EntityUtility::mergeEntities()
+- Sle\TYPO3\Extbase\UserFunc\VersionUserFunc::getExtensionVersion()
 
 ## v0.4.0
 ### Added
