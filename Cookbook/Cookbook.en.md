@@ -58,7 +58,7 @@ FalUtility::downloadFile($uid, $additionalHeaders = array());
 // get extension version
 lib.version = USER
 lib.version {
-    userFunc = Sle\TYPO3\Extbase\UserFunc\VersionUserFunc->getExtensionVersion
+    userFunc = Sle\TYPO3\Extbase\UserFunc\ExtensionUserFunc->getExtensionVersion
     # extensionKey [mandatory]
     extensionKey = my_ext_key
     # Overrides default label [optional]
