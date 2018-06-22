@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.0
+### Changed
+- Improved CMS dependencies
+
 ## v0.7.0
 ### Added
 - Sle\TYPO3\Extbase\Extensionmanager\ExtensionUtility::getExtensionVersion()
